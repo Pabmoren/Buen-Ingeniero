@@ -14,24 +14,20 @@ const int movimientos[10][8] = {
 };
 
 long long int countKnightMoves(int inicio, int num_mov) {
-    long long int actual[10] = {0};  // Current position counts
-    long long int siguiente[10] = {0};     // Next position counts
+    long long int actual[10] = {0};
+    long long int siguiente[10] = {0};
     int movIdx;
     int posicion = 0;
 
-    // Initialize starting position
     actual[inicio] = 1;
 
-    // Process each move
     while (num_mov > 0) {
-        // Reset next positions
         posicion = 0;
         while (posicion < 10) {
             siguiente[posicion] = 0;
             posicion++;
         }
 
-        // Process current positions
         posicion = 0;
         while (posicion < 10) {
             if (actual[posicion] > 0) {
@@ -44,7 +40,6 @@ long long int countKnightMoves(int inicio, int num_mov) {
             posicion++;
         }
 
-        // Update current positions for next iteration
         posicion = 0;
         while (posicion < 10) {
             actual[posicion] = siguiente[posicion];
@@ -54,7 +49,6 @@ long long int countKnightMoves(int inicio, int num_mov) {
         num_mov--;
     }
 
-    // Count total combinations
     long long int total = 0;
     posicion = 0;
     while (posicion < 10) {
